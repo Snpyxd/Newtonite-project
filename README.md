@@ -8,20 +8,59 @@ retried requests and background jobs that fail.
 
 **Stack:** React + Vite + TanStack Query · Node.js + Express + TypeScript · PostgreSQL 16 · Vitest + Supertest · Docker Compose
 
-## Run it (one command)
+## Run locally (without Docker)
 
-Prerequisite: Docker with Compose.
+### Prerequisites
+- Node.js and npm
+- PostgreSQL 16 or a compatible version
+
+### 1. Configure the database
+
+Ensure PostgreSQL is running and create the `ops` database. Configure the database credentials in your local `.env` file to match your PostgreSQL setup. Never commit `.env` to GitHub.
+
+### 2. Start the backend API
+
+Run in the first terminal:
 
 ```bash
-cp .env.example .env        # optional; defaults work for local use
+cd backend
+npm install
+npm run migrate
+npm run seed
+npm start
+```
+
+### 3. Start the background worker
+
+Run in a second terminal from the project root:
+
+```bash
+cd backend
+npm run worker
+```
+
+### 4. Start the frontend
+
+Run in a third terminal from the project root:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 to use the application.
+
+- API health check: http://localhost:3000/health
+
+### Docker alternative
+
+If Docker Compose is available, you can instead start the application with:
+
+```bash
 docker compose up --build
 ```
 
-Then open **http://localhost:5173**. On first start the API applies migrations and seeds
-4 teams, 10 users and 5,000 work items. The `worker` container processes notifications in the background.
-
-- API: http://localhost:3000 (`GET /health`)
-- Postgres: localhost:5432 (user `ops`, password `ops`, db `ops`)
 
 ### Demo logins (password for everyone: `password123`)
 
