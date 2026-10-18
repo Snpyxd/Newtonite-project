@@ -1,10 +1,6 @@
 # Operations Desk (newtonite-ops-<rollno>)
 
-An internal web app where teams create, assign, track and resolve operational work items
-(incidents, customer issues, payments, compliance, tasks). It enforces a server-side workflow with a
-Lead-only approval step, per-team roles, an append-only activity history, and a dashboard of what needs
-attention. It is built to stay correct under concurrency: two people claiming one item, stale edits,
-retried requests and background jobs that fail.
+An internal web app where teams create, assign, track and resolve operational work items (incidents, customer issues, payments, compliance, tasks). It enforces a server-side workflow with a Lead-only approval step, per-team roles, an append-only activity history, and a dashboard of what needs attention. It is built to stay correct under concurrency: two people claiming one item, stale edits, retried requests and background jobs that fail.
 
 **Stack:** React + Vite + TanStack Query · Node.js + Express + TypeScript · PostgreSQL 16 · Vitest + Supertest · Docker Compose
 
@@ -16,11 +12,11 @@ retried requests and background jobs that fail.
 
 ### 1. Configure the database
 
-Ensure PostgreSQL is running and create the `ops` database. Configure the database credentials in your local `.env` file to match your PostgreSQL setup. Never commit `.env` to GitHub.
+Ensure PostgreSQL is running and create the `ops` database. Configure your local `.env` file with the correct database credentials. Never commit `.env` to GitHub.
 
 ### 2. Start the backend API
 
-Run in the first terminal:
+Run in the first terminal from the project root:
 
 ```bash
 cd backend
@@ -55,12 +51,11 @@ Open http://localhost:5173 to use the application.
 
 ### Docker alternative
 
-If Docker Compose is available, you can instead start the application with:
+If Docker Compose is available, you can start the application using:
 
 ```bash
 docker compose up --build
 ```
-
 
 ### Demo logins (password for everyone: `password123`)
 
